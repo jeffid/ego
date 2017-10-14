@@ -1,0 +1,559 @@
+/* 全局设定 *******************************************************/
+body,
+ul,
+dl,
+dt,
+dd,
+p {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
+    padding: 0;
+    margin: 0;
+    font-style: normal;
+}
+
+body {
+    font-size: 12px;
+    background-color: #efefef;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+em {
+    font-style: normal;
+}
+input:focus {
+    outline: none;
+}
+
+.u-btn {
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.u-btn:focus {
+    outline: none;
+}
+
+.stamp {
+    z-index: 1;
+}
+
+/* icon */
+.u-icon {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../res/images/sprite-icon.png) no-repeat;
+}
+.u-icon-search {
+    background-position: -4px -40px;
+}
+
+.u-icon-user {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    vertical-align: text-top;
+    background-position: -4px 0;
+}
+
+.u-icon-diamond {
+    background-position: -4px -155px;
+}
+
+.u-icon-star {
+    background-position: -4px -199px;
+}
+
+.u-icon-calendar {
+    background-position: -4px -239px;
+}
+
+.u-icon-history {
+    background-position: -4px -279px;
+}
+
+.u-icon-favorite {
+    background-position: -4px -316px;
+}
+
+.section_head .u-icon-partner.u-icon {
+    width: 46px;
+    background-position: 0 -354px;
+}
+
+.u-icon-pencil {
+    background-position: -4px -399px;
+}
+
+.u-icon-follow {
+    width: 9px;
+    height: 9px;
+    margin-right: 5px;
+    background-position: -19px -19px;
+}
+
+.u-icon-unfollow {
+    width: 9px;
+    height: 9px;
+    margin-right: 5px;
+    background-position: -4px -19px;
+}
+.u-icon-sex {
+    width: 12px;
+    height: 18px;
+    /*margin-left: 5px;*/
+    vertical-align: middle;
+}
+
+.u-icon-female {
+    width: 12px;
+    height: 17px;
+    background-position: -50px 0;
+}
+
+.u-icon-male {
+    width: 12px;
+    height: 17px;
+
+    background-position: -65px 0;
+}
+.u-icon-address {
+    width: 12px;
+    height: 17px;
+
+    background-position: -50px -20px;
+}
+
+.u-icon-close {
+    background-position: -26px -1px;
+}
+.u-icon-edit {
+    width: 16px;
+    height: 16px;
+    background-position: -35px -60px;
+}
+.u-icon-delete {
+    width: 16px;
+    height: 16px;
+    background-position: -35px -40px;
+}
+
+.u-icon-arrow {
+    width: 16px;
+    height: 12px;
+    background-position: -50px -40px;
+}
+
+.m-user .u-icon-arrow {
+    margin-left: 5px;
+    /*-ms-transform: rotate(-90deg);*/
+    transform: rotate(-90deg);
+
+}
+
+.m-user:hover .u-icon-arrow {
+    /*-ms-transform: rotate(0deg); /!* IE9 *!/*/
+    transform: rotate(0deg); /* 触发面板时箭头向下，表示展开 */
+}
+.u-icon-down {
+    width: 30px;
+    height: 30px;
+    background-position: -4px -118px;
+    transform: rotate(90deg);
+}
+
+
+
+/* 功能 **************************************************************/
+#theme {
+    color: #5ed0ba;
+    border: 1px solid #5ed0ba;
+    border-bottom: 2px solid #e4e5e5;
+
+}
+
+.f-clearfix::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+}
+
+.f-dn {
+    display: none;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-fr {
+    float: right;
+}
+
+/* 水平居中 */
+.f-justifyfix {
+    text-align: justify;
+    font-size: 0;
+}
+
+.f-justifyfix::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+}
+
+.f-justifyfix > * {
+    display: inline-block;
+}
+
+/* 垂直居中 */
+.f-middlefix {
+    font-size: 0;
+}
+
+.f-middlefix::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.f-middlefix > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 取消input的border和outline*/
+.f-input-normal {
+    border: none;
+    padding: 0;
+    margin: 0;
+    /*vertical-align: bottom;*/
+}
+
+.f-input-normal:focus {
+    outline: none;
+    box-shadow: 0 0 .5px 1px skyblue;
+}
+
+/**/
+/* 状态 ************************/
+.m-nav .z-active {
+    color: #5ed0ba;
+}
+
+.u-formitem .z-error {
+    border-color: red;
+
+}
+/************************************************************************/
+/* 顶栏 *******************************/
+.g-header {
+    height: 90px;
+    background-color: #fff;
+}
+
+.g-header > .container {
+    width: 1076px;
+    margin: 0 auto;
+}
+.g-header > .container > div {
+    float: left;
+}
+/**************************************/
+.m-logo {
+    padding-top: 22px;
+    padding-left: 36px;
+}
+
+.g-header .m-nav {
+    position: relative;
+    /*width: 310px;*/
+    height: 30px;
+    margin-top: 32px;
+    margin-right: 35px;
+    margin-left: 35px;
+    color: #dcdddd;
+}
+
+.g-header .m-nav li {
+    float: left;
+    padding-left: 26px;
+    padding-right: 26px;
+    list-style-type: none;
+}
+
+.g-header .m-nav li:first-child {
+    padding-left: 20px;
+}
+
+.g-header .m-nav li:last-child {
+    padding-right: 20px;
+}
+
+.m-nav .nav_track {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #dcdddd;
+}
+
+.m-nav .slider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #5ed0ba;
+    transition: nease .1s;
+}
+
+/* 搜索框 */
+.m-search {
+    margin-top: 25px;
+    margin-right: 30px;
+}
+
+.search_form {
+    display: table-cell;
+    box-sizing: border-box;
+    width: 200px;
+    height: 40px;
+    border: 2px solid #5ed0ba;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.search_form > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.search_form > input {
+    width: 130px;
+    margin-left: 13px;
+}
+
+.search_form > button {
+    width: 22px;
+    height: 22px;
+    margin: 0 10px;
+}
+
+/* 访客登录或注册按钮 */
+#guest {
+    margin-top: 25px;
+}
+
+#guest > .u-btn {
+    display: table-cell;
+    box-sizing: border-box;
+    width: 90px;
+    height: 38px;
+    font-size: 12px;
+    vertical-align: middle;
+    border-radius: 4px;
+    border: 1px solid #5ed0ba;
+}
+
+.u-btn-default {
+    /* 白字彩底 */
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #5ed0ba;
+}
+
+.u-btn-primary {
+    box-sizing: border-box;
+    color: #5ed0ba;
+    border: 1px solid #5ed0ba;
+    background-color: #fff;
+}
+
+
+.u-btn-link {
+    margin-left: 5px;
+    color: #5ed0ba;
+    background-color: #fff;
+}
+
+/* 用户信息*/
+.m-user {
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+    width: 190px;
+    height: 90px;
+    background-color: #fff;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.m-user:hover {
+    border-color: #ddd;
+}
+
+.user_info {
+    display: table-cell;
+    box-sizing: border-box;
+    height: 90px;
+    width: 188px;
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.user_info > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.u-avatar {
+    position: relative;
+    overflow: hidden;
+    width: 50px;
+    height: 55px;
+}
+
+.u-avatar > img {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.u-avatar > .avatar {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user_info .user_nickname {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 70px;
+    margin-left: 5px;
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+
+
+.user_list {
+    position: absolute;
+    top: 90px;
+    left: -1px;
+    display: none;
+    width: 100%;
+    /*
+    margin-left: -1px;
+    margin-right: -1px;
+    */
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+}
+
+.m-user:hover .user_list {
+    display: block;
+}
+
+.user_list > li {
+    display: block;
+}
+
+.user_list a {
+    display: block;
+    /*width: 100%;*/
+    height: 50px;
+    margin-right: -1px; /* 用于去除右侧莫名白边 */
+    text-align: center;
+    line-height: 50px;
+    list-style-type: none;
+
+}
+
+.user_list a:hover {
+    background-color: #eee;
+}
+
+/* 通用提醒框样式 */
+.alert-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 26px;
+    border: 1px solid #eee;
+    box-shadow: 2px 2px 2px 0 #eee;
+    font-size: 15px;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+}
+.alert-modal > .head {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    color: #5ed0ba;
+    border-bottom: 1px solid #eee;
+    
+}
+.alert-modal > .head > h4 {
+    padding-right: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.alert-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 18px;
+    height: 17px;
+}
+.alert-modal > .main {
+    text-align: center;
+}
+.alert-modal .name {
+    color: #5ed0ba;
+}
+.alert-modal .content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.alert-modal .main button {
+    box-sizing: border-box;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
+.alert-modal .main button + button {
+    margin-left: 35px;
+}

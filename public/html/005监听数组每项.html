@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+<ul>
+  <li>index1</li>
+  <li>index2</li>
+  <li>index3</li>
+  <li>index4</li>
+  <li>index5</li>
+</ul>
+<script>
+  var lis=Array.prototype.slice.call(document.getElementsByTagName("li"));
+/*
+  lis.forEach(function(item,idx) {
+    item.addEventListener("click",function() {
+      console.log(idx);
+    })
+  })
+*/
+/*
+  for(var i= 0;i<lis.length;i++) {
+    lis[i].addEventListener("click",function() {
+      console.log(i); //都是5
+  })
+  }
+*/
+</script>
+<script>
+  /*仿写forEach（）*/
+  Array.prototype.each=function(callback) {
+    for(var i=0;i<this.length;i++) {
+      callback(this[i],i,this);
+    }
+  }
+  lis.each(function(item,idx) {
+    item.addEventListener("click",function() {
+      console.log(idx);
+    })
+  })
+for(var e in lis) {
+  console.log(e,lis[e]);
+}
+  console.log(3 in lis);
+</script>
+</body>
+</html>

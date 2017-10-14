@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width">
+  <meta name="description" content="ego"/>
+  <meta name="keywords" content="ego"/>
+  <title>ego</title>
+  <link href="../../common/base.css" rel="stylesheet"/>
+  <link href="../../page/works/list.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 项栏 -->
+<div class="g-header">
+  <div class="container f-clearfix">
+    <div class="m-logo">
+      <a href="#"><img src="../res/images/logo.jpg" alt=""></a>
+    </div>
+    <div class="m-nav">
+      <ul>
+        <li><a href="./index">首页</a></li>
+        <li class="z-active"><a href="./works">作品</a></li>
+        <li><a href="#">圈子</a></li>
+        <li><a href="#">奇思妙想</a></li>
+      </ul>
+      <div class="nav_track">
+        <span class="slider"></span>
+      </div>
+    </div>
+    <div class="m-search">
+      <form action="/search" class="search_form">
+        <input type="text" class="f-input-normal" placeholder="输入搜索内容">
+        <button class="u-btn u-icon u-icon-search" type="submit"></button>
+      </form>
+    </div>
+
+    <!-- 未登录信息 -->
+    <div class="" id="guest">
+      <button class="u-btn u-btn-default" id="login">
+        <i class="u-icon u-icon-user"></i>登录
+      </button>
+      <button class="u-btn u-btn-link" id="register">注册</button>
+    </div>
+
+    <!-- 登录信息 -->
+    <div class="m-user f-dn" id="userdropdown">
+      <div class="user_info">
+        <span class="u-avatar">
+          <img class="avatar" src="../res/images/avatar-amber.jpg" alt="amber">
+          <img class="frame" src="../res/images/avatar-frame.png">
+        </span>
+        <span>
+          <span class="user_nickname">Amber</span>
+          <i class="u-icon u-icon-sex u-icon-female"></i>
+        </span>
+        <span class="u-icon u-icon-arrow"></span>
+      </div>
+      <ul class="user_list">
+        <li><a href="#">个人中心</a></li>
+        <li><a href="#">信息</a></li>
+        <li><a href="#">设置</a></li>
+        <li><a href="#" id="logout">退出帐号</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="g-banner">
+  <img src="../../res/images/banner11.png" alt="">
+</div>
+<div class="g-body">
+  <div class="g-profile">
+    <!-- tpl -->
+    <script id="user-info-tpl" type="text/x-tpl">
+    <div class="user-info">
+      <div class="u-avatar">
+        <img class="avatar" src="../res/images/avatar-amber.jpg" alt="">
+        <img class="frame" src="../res/images/avatar-frame.png" alt="">
+      </div>
+      <div class="u-info">
+        <em class="nickname">{{nickname}}</em>
+        <span class="sex">
+          <i class="u-icon {{sexClassName}}"></i>
+        </span>
+      </div>
+      <div class="u-info">
+        <em class="age">{{age}}岁</em>
+        <em class="constellation">{{constellation}}</em>
+        <span class="address-info">
+          <i class="u-icon u-icon-address"></i>
+          <em class="address">{{address}}</em>
+        </span>
+      </div>
+    </div>
+
+    </script>
+    <!-- /tpl -->
+  </div>
+  <div class="g-main split-line">
+    <div class="g-aside">
+      <ul class="m-nav-side f-clearfix">
+        <li class="z-msg">个人中心</li>
+        <li class="z-active">我的作品</li>
+        <li>和关注的</li>
+        <li>我的圈子</li>
+        <li>消息提醒</li>
+        <li>隐私设置</li>
+      </ul>
+    </div>
+    <div class="g-works">
+      <div class="head">
+        <h4>/我发表的作品/</h4>
+        <button class="u-btn u-btn-default upload">上传作品</button>
+      </div>
+
+      <div class="g-wrap">
+        <ul class="m-works f-clearfix ">
+          <script id="works-item" type="text/x-tpl">
+          <li class="item" data-id="{{id}}" data-name="{{name}}">
+            <a href="#">
+              <img src="{{coverUrl}}" alt="">
+              <h3>{{name}}</h3>
+            </a>
+            <div class="icons">
+              <i class="u-icon u-icon-edit"></i>
+              <i class="u-icon u-icon-delete"></i>
+            </div>
+          </li>
+          </script>
+          <!--
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+                    <li class="item">
+                      <a href="#">
+                        <img src="../../res/images/jx1.png" alt="">
+                        <h3>唯美的</h3>
+                      </a>
+                      <div class="icons">
+                        <i class="u-icon u-icon-edit"></i>
+                        <i class="u-icon u-icon-delete"></i>
+                      </div>
+                    </li>
+          -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!--
+  <ul class="m-pagination">
+    <li class="z-disabled">首页</li>
+    <li class="z-disabled">上一页</li>
+    <li class="z-active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>下一页</li>
+    <li>尾页</li>
+  </ul>
+-->
+
+</div>
+
+<script id="alert-modal" type="text/x-tpl">
+
+<div class="alert-modal">
+  <div class="head">
+    <h4>提示消息：<span class="title">{{title}}</span></h4>
+    <button class="u-icon u-icon-close close u-btn"></button>
+  </div>
+  <div class="main">
+    <p class="content">{{content}}</p>
+    <button class="u-btn u-btn-default confirm">确定</button>
+    <button class="u-btn u-btn-primary cancel">取消</button>
+  </div>
+</div>
+</script>
+<!--
+<p class="content">确定要删除 <em class="name">“唯美的”</em>的吗？</p>
+-->
+<!--<input class="edit" type="text" value="">-->
+<!-- JS ------------------------------------------------------------>
+<script src="../../page/handlebars.js"></script>
+<script src="../../page/works/address_codes.js"></script>
+<script src="../../common/base.js"></script>
+<script src="../../page/works/list.js"></script>
+</body>
+</html>

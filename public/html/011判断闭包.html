@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style></style>
+</head>
+<body>
+
+<script>
+  var MODULE = (function () {
+    var my = {},
+        privateVariable = 1;
+    function privateMethod() {
+      // ...
+    }
+    my.moduleProperty = 1;
+    my.moduleMethod = function () {
+      // ...
+    };
+    return my;
+  }());
+  console.log(++MODULE.moduleProperty);
+  console.log(++MODULE.moduleProperty);
+
+
+</script>
+</body>
+</html>

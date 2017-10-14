@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width">
+  <meta name="description" content="ego"/>
+  <meta name="keywords" content="ego"/>
+  <title>ego</title>
+  <link href="../common/base.css" rel="stylesheet"/>
+  <link href="../page/index.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 项栏 -->
+<div class="g-header">
+  <div class="container f-clearfix">
+    <div class="m-logo">
+      <a href="#"><img src="../res/images/logo.jpg" alt=""></a>
+    </div>
+    <div class="m-nav">
+      <ul>
+        <li class="z-active"><a href="./index">首页</a></li>
+        <li><a href="./works">作品</a></li>
+        <li><a href="#">圈子</a></li>
+        <li><a href="#">奇思妙想</a></li>
+      </ul>
+      <div class="nav_track">
+        <span class="slider"></span>
+      </div>
+    </div>
+    <div class="m-search">
+      <form action="/search" class="search_form">
+        <input type="text" class="f-input-normal" placeholder="输入搜索内容">
+        <button class="u-btn u-icon u-icon-search" type="submit"></button>
+      </form>
+    </div>
+
+    <!-- 未登录信息 -->
+    <div class="" id="guest">
+      <button class="u-btn u-btn-default" id="login">
+        <i class="u-icon u-icon-user"></i>登录
+      </button>
+      <button class="u-btn u-btn-link" id="register">注册</button>
+    </div>
+
+    <!-- 登录信息 -->
+    <div class="m-user f-dn" id="userdropdown">
+      <div class="user_info">
+        <span class="u-avatar">
+          <img class="avatar" src="../res/images/avatar-amber.jpg" alt="amber">
+          <img class="frame" src="../res/images/avatar-frame.png">
+        </span>
+        <span>
+          <span class="user_nickname">Amber</span>
+          <i class="u-icon u-icon-sex u-icon-female"></i>
+        </span>
+        <span class="u-icon u-icon-arrow"></span>
+      </div>
+      <ul class="user_list">
+        <li><a href="#">个人中心</a></li>
+        <li><a href="#">信息</a></li>
+        <li><a href="#">设置</a></li>
+        <li><a href="#" id="logout">退出帐号</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- 轮播图 -->
+<div class="g-banner">
+  <!--
+      <div class="m-slider">
+        <ul class="slider_list">
+          <li class="slider_item">
+            <a href="#" class="slider_item_lk">
+              <img src="../res/images/banner0.jpg" alt="" class="slider_item_img">
+            </a>
+          </li>
+          <li class="slider_item">
+            <a href="#" class="slider_item_lk">
+              <img src="../res/images/banner0.jpg" alt="" class="slider_item_img">
+            </a>
+          </li>
+          <li class="slider_item">
+            <a href="#" class="slider_item_lk">
+              <img src="../res/images/banner0.jpg" alt="" class="slider_item_img">
+            </a>
+          </li>
+          <li class="slider_item">
+            <a href="#" class="slider_item_lk">
+              <img src="../res/images/banner0.jpg" alt="" class="slider_item_img">
+            </a>
+          </li>
+        </ul>
+        <div class="slider_indicator">
+          <i class="slider_indicator_btn z-active" data-index="0"></i>
+          <i class="slider_indicator_btn" data-index="1"></i>
+          <i class="slider_indicator_btn" data-index="2"></i>
+          <i class="slider_indicator_btn" data-index="3"></i>
+        </div>
+      </div>
+  -->
+</div>
+<!-- 主体 -->
+<div class="g-body f-clearfix">
+  <!-- 主栏 -->
+  <div class="g-main">
+    <!-- 精选推荐 --------------------------------------->
+    <div class="m-section f-clearfix " id="tuijian">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-diamond"></i>/精选推荐/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list f-justifyfix">
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/jx1.png" alt="" class="section_item_img">
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/jx2.png" alt="" class="section_item_img">
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/jx3.png" alt="" class="section_item_img">
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/jx4.jpg" alt="" class="section_item_img">
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 明日之星 ------------------------------------------->
+    <div class="m-section f-clearfix " id="mingxing">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-star"></i>/明日之星/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list  m-card-list starlist f-clearfix">
+        <!--
+                <li class="section_item m-card f-middlefix" data-starid="123">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+                <li class="section_item m-card f-middlefix">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+                <li class="section_item m-card f-middlefix">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+                <li class="section_item m-card f-middlefix">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+                <li class="section_item m-card f-middlefix">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+                <li class="section_item m-card f-middlefix">
+                  <img src="../res/images/null1.png" alt="" class="section_item_img card_avatar">
+
+                  <p class="card_info">
+                    <a href="#" class="name">你的名字</a>
+                    作品&nbsp;<span>123</span>&nbsp;&nbsp;
+                    粉丝&nbsp;<span>123</span>
+                  </p>
+                  <button class="z-follow u-btn u-btn-primary">
+                    <i class="u-icon u-icon-follow"></i>已关注
+                  </button>
+                </li>
+        -->
+      </ul>
+    </div>
+
+    <!-- 最新作品 --------------------------------------->
+    <div class="m-section f-clearfix " id="zuopin">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-calendar"></i>/最新作品/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list f-justifyfix  normal_list">
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 活动进行时 -->
+    <div class="m-section f-clearfix " id="huodong">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-history"></i>/活动进行时/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="huodong_list ">
+        <li class="huodong_item">
+          <a href="#" class="huodong_item_lk stamp">
+            <img src="../res/images/banner0.jpg" alt="" class="section_item_img">
+          </a>
+          <button class="u-btn u-btn-default">快来PK</button>
+          <button class="u-btn u-btn-default">邀请小伙伴</button>
+        </li>
+        <li class="huodong_item">
+          <a href="#" class="huodong_item_lk stamp">
+            <img src="../res/images/banner0.jpg" alt="" class="section_item_img">
+          </a>
+          <button class="u-btn u-btn-default">快来PK</button>
+          <button class="u-btn u-btn-default">邀请小伙伴</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 我们都爱原创 -->
+    <div class="m-section f-clearfix " id="yuanchuang">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-favorite"></i>/我们都爱原创/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list f-justifyfix normal_list">
+        <li class="section_item bigitem">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null3.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 我们是同人粉 -->
+    <div class="m-section f-clearfix " id="tongren">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-partner"></i>/我们是同人粉/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list f-justifyfix normal_list">
+        <li class="section_item bigitem">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null3.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 看谁临摹的最好 -->
+    <div class="m-section f-clearfix" id="linmo">
+      <div class="section_head">
+        <h4><i class="u-icon u-icon-pencil"></i>/看谁临摹的最好/</h4>
+        <a href="" class="section_head_lk u-more">更多<i class="u-icon"></i></a>
+      </div>
+      <ul class="section_list f-justifyfix normal_list">
+        <li class="section_item bigitem">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null3.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+        <li class="section_item ">
+          <a href="#" class="section_item_lk">
+            <img src="../res/images/null1.png" alt="" class="section_item_img">
+            <span>我是作品名称</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- .g-main -->
+
+  <!-- 侧栏 -->
+  <div class="g-side">
+    <!-- 我的作品 ---------------------->
+    <div class="m-section f-clearfix" id="my">
+      <div class="side_head stamp">
+        <h4>我的作品</h4>
+        <i class="u-icon u-icon-down"></i>
+      </div>
+      <div class="side_content"></div>
+    </div>
+    <!-- 活跃圈子 ---------------------->
+    <div class="m-section f-clearfix" id="quanzi">
+      <div class="side_head   ">
+        <h4>活跃圈子</h4>
+        <span class="create">创建圈子</span>
+      </div>
+      <div class="side_content">
+        <ul class="content_list">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>门口小贩</h5>
+                <em>查看&nbsp;5221人</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>门口小贩</h5>
+                <em>查看&nbsp;5221人</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>门口小贩</h5>
+                <em>查看&nbsp;5221人</em>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <a href="#" class=" u-more">更多<i class="u-icon"></i></a>
+      </div>
+    </div>
+
+    <!-- 热门话题 ---------------------->
+    <div class="m-section f-clearfix" id="remen">
+      <div class="side_head   ">
+        <h4>热门话题</h4>
+      </div>
+
+      <div class="side_content">
+        <ul class="content_list">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">1.【萝莉学院】你不知道的那些事儿
+              这是标题。。。。。。。。。。。</a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">1.【萝莉学院】你不知道的那些事儿
+              这是标题。。。。。。。。。。。</a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">1.【萝莉学院】你不知道的那些事儿
+              这是标题。。。。。。。。。。。</a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">1.【萝莉学院】你不知道的那些事儿
+              这是标题。。。。。。。。。。。</a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">1.【萝莉学院】你不知道的那些事儿
+              这是标题。。。。。。。。。。。</a>
+          </li>
+        </ul>
+        <a href="#" class=" u-more">更多<i class="u-icon"></i></a>
+      </div>
+    </div>
+
+    <!-- 排行 ---------------------->
+    <div class="m-section f-clearfix" id="paihang">
+      <div class="side_head   ">
+        <h4>排行</h4>
+
+        <div class="m-nav">
+          <ul>
+            <li class="z-active">原创</li>
+            <li>同人</li>
+            <li>临摹</li>
+          </ul>
+          <div class="nav_track">
+            <span class="slider"></span>
+          </div>
+        </div>
+      </div>
+      <div class="side_content">
+        <ul class="content_list content_list_1 z-active">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称1</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+        </ul>
+        <ul class="content_list content_list_2">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称2</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+        </ul>
+        <ul class="content_list content_list_3">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称3</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <h5>我是作品名称</h5>
+                <p>用户名</p>
+                <em>查看&nbsp;2348</em>
+                <em>收藏&nbsp;421</em>
+              </span>
+            </a></li>
+        </ul>
+        <a href="#" class=" u-more"><i class="u-icon"></i></a>
+      </div>
+    </div>
+
+
+    <!-- 达人 ---------------------->
+    <div class="m-section f-clearfix" id="daren">
+      <div class="side_head   ">
+        <h4>达人排行榜</h4>
+      </div>
+      <div class="side_content">
+        <ul class="content_list">
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <p>用户名</p>
+                <em>作品&nbsp;377</em>&nbsp;&nbsp;
+                <em>粉丝&nbsp;1760</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <p>用户名</p>
+                <em>作品&nbsp;377</em>
+                <em>粉丝&nbsp;1760</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <p>用户名</p>
+                <em>作品&nbsp;377</em>
+                <em>粉丝&nbsp;1760</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <p>用户名</p>
+                <em>作品&nbsp;377</em>
+                <em>粉丝&nbsp;1760</em>
+              </span>
+            </a>
+          </li>
+          <li class="content_item">
+            <a href="#" class="content_item_lk">
+              <img src="../res/images/null1.png" alt="">
+              <span>
+                <p>用户名</p>
+                <em>作品&nbsp;377</em>
+                <em>粉丝&nbsp;1760</em>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <a href="#" class=" u-more"><i class="u-icon"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- .g-side / -->
+</div>
+<!-- .g-body / -->
+<!-- 底栏 -------------------------------------------------->
+<div class="g-footer f-clearfix">
+  <dl class="link_list">
+    <dt>/ 友 情 链 接 /</dt>
+    <dd class="link_itme"><a href="#"></a></dd>
+  </dl>
+  <div class="about"><h4>/ 关 于 我 们 /</h4></div>
+</div>
+
+<!-- 登录模块 ---------------------------------------->
+<div class="m-popup-group">
+  <div class="u-curtain f-dn"></div>
+  <div class="m-popup m-popup-1 f-dn" id="login_panel">
+    <button class="close u-icon u-icon-close u-btn"></button>
+    <div class="login_panel_head f-clearfix">
+      <strong class="f-fl">欢迎回来</strong><span class="f-fr ">还没有账号？<a href="#" class="register_lk ">立即注册</a></span>
+    </div>
+    <form class="m-form  m-form-1" id="login_panel_form" name="login" action="#">
+      <div class="u-formitem">
+        <input class="f-input-normal" name="username" type="text" placeholder="手机号">
+      </div>
+      <div class="u-formitem">
+        <input class="f-input-normal" name="password" type="password" placeholder="密码">
+      </div>
+      <div class="option">
+        <input type="checkbox" name="remember" id="remeber">
+        <label for="remeber">保持登录</label>
+        <a class="f-fr" href="#">忘记密码？</a>
+      </div>
+      <div class="m-error error_info"><i class="u-icon u-icon-error"></i><span class="error_msg">Lorem ipsum.</span>
+      </div>
+      <div class="u-formitem">
+        <button class="u-btn u-btn-default" type="submit">登录</button>
+      </div>
+    </form>
+  </div>
+  <!-- /登录模块  -------------->
+
+  <!-- 注册模块 ----------------->
+  <div class="m-popup m-popup-2 f-dn" id="register_panel">
+    <button class="close u-icon u-icon-close u-btn"></button>
+    <div class="register_panel_head">
+      <img src="../res/images/logo.jpg" alt="">
+    </div>
+    <form action="" class="m-form" id="register_form" name="register">
+      <div class="u-formitem">
+        <label class="formitem-tt" for="phone">手机号</label>
+        <input class="f-input-normal" id="phone" name="username" type="text" placeholder="11位手机号">
+      </div>
+      <div class="u-formitem">
+        <label class="formitem-tt" for="nickname">昵称</label>
+        <input class="f-input-normal" id="nickname" name="nickname" type="text" placeholder="中英文均可，至少8个字符">
+      </div>
+      <div class="u-formitem">
+        <label class="formitem-tt" for="password">密码</label>
+        <input class="f-input-normal" id="password" name="password" type="password" placeholder="长度6-16个字符，不包含空格">
+      </div>
+      <div class="u-formitem">
+        <label class="formitem-tt" for="confirmpsw">确认密码</label>
+        <input class="f-input-normal" id="confirmpsw" name="confirmpsw" type="password" placeholder="确认密码">
+      </div>
+
+      <div class="u-formitem f-clearfix">
+        <label class="formitem-tt">性别</label>
+        <input id="male" name="sex" type="radio" value="0"><label for="male">少男</label>
+        <input id="female" name="sex" type="radio" value="1"><label for="female">少女</label>
+      </div>
+
+      <div class="u-formitem">
+        <label class="formitem-tt">生日</label>
+
+        <div class="m-cascade m-cascade-date formitem-ct f-justifyfix">
+
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class="year select_val" data-code="" data-index="">年</span>
+            </div>
+            <ul class="select_list f-dn f-clearfix">
+<!--
+              <li data-code="010" data-index="0">10</li>
+-->
+            </ul>
+          </div>
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class="year select_val" data-code="" data-index="">月</span>
+            </div>
+            <ul class="select_list f-dn">
+            </ul>
+          </div>
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class="year select_val" data-code="" data-index="">日</span>
+            </div>
+            <ul class="select_list f-dn">
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="u-formitem">
+        <label class="formitem-tt">所在地</label>
+        <div class="m-cascade m-cascade-address formitem-ct f-justifyfix">
+
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class=" select_val" data-code="" data-index="">省</span>
+            </div>
+            <ul class="select_list f-dn">
+            </ul>
+          </div>
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class=" select_val" data-code="" data-index="">市</span>
+            </div>
+            <ul class="select_list f-dn">
+            </ul>
+          </div>
+          <div class="m-select arrow-down">
+            <div class="select_hd">
+              <span class=" select_val" data-code="" data-index="">县/区</span>
+            </div>
+            <ul class="select_list f-dn">
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="u-formitem">
+        <label class="formitem-tt"  for="captcha">验证码</label>
+        <input class="f-input-normal" id="captcha" name="captcha" type="text">
+        <img class="captchaimg" src="/captcha" title="点我切换" alt="验证码">
+      </div>
+
+
+      <div class="option">
+        <input type="checkbox" id="readed" name="readed">
+        <label for="readed">我已阅读并同意相关条款</label>
+      </div>
+      <div class="m-error error_info f-dn"><i class="u-icon u-icon-error"></i><span class="error_msg">Lorem ipsum.</span>
+      </div>
+      <div class="u-formitem">
+        <button class="u-btn u-btn-default" type="submit">注册</button>
+      </div>
+
+    </form>
+  </div>
+  <!-- /注册模块  ------------------->
+</div>
+<!-- JS ----------------------------------------------->
+<script src="../page/works/md5.js"></script>
+<script src="../page/works/address_codes.js"></script>
+<script src="../common/base.js"></script>
+<script src="../page/index.js"></script>
+</body>
+</html>

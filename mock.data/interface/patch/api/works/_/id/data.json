@@ -1,0 +1,49 @@
+{
+    "code": 200,
+    "msg": "ESxgF8lXJa",
+    "result": {
+        "id": 77430,
+        "name": "oYbGXajBrE",
+        "tag": "少女系,萌神,萝莉,未来日记",
+        "coverId": 78363,
+        "coverUrl": "http://via.placeholder.com/102x158",
+        "pictures": [
+            {
+                "id": 78779,
+                "name": "79MuZobvyu",
+                "url": "http://via.placeholder.com/100x140",
+                "position": 15409,
+                "worksId": 78983,
+                "creatorId": 79622,
+                "createTime": 1505877536541,
+                "updateTime": 1505877843555
+            },
+            {
+                "id": 79662,
+                "name": "sWimnkuzTw",
+                "url": "http://via.placeholder.com/100x140",
+                "position": 72434,
+                "worksId": 79702,
+                "creatorId": 80403,
+                "createTime": 1505877265973,
+                "updateTime": 1505879180341
+            },
+            {
+                "id": 80769,
+                "name": "uqJVgAAlgn",
+                "url": "http://via.placeholder.com/100x140",
+                "position": 13261,
+                "worksId": 81342,
+                "creatorId": 81765,
+                "createTime": 1505879064680,
+                "updateTime": 1505878111147
+            }
+        ],
+        "category": 0,
+        "description": "mQCVEXoidm",
+        "privilege": 1,
+        "authorization": 1,
+        "createTime": 1505877402349,
+        "updateTime": 1505877746953
+    }
+}

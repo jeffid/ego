@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    .container {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #000;
+      /*line-height: 300px; /!* 必需 *!/*/
+      /*font-size: 0;*/ /* 必需,至少影响左右间距 */
+    }
+
+    /* 行高换成伪元素可自适应容器高度 */
+    .container::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+    }
+    .container > * {
+      display: inline-block; /* 必需 */
+      width: 50px;
+      height: 50px;
+      vertical-align: middle;  /*必需 */
+    }
+
+    span {
+      font-size: 16px;
+      line-height: normal;
+      background-color: lime;
+    }
+    i {
+      background-color: skyblue;
+    }
+
+  </style>
+</head>
+<body>
+<!-- 子块完全垂直居中 -->
+<div class="container"><img src="../res/images/jx1.png" alt="">xx<span>xxxxxx</span>
+  <i></i>
+</div>
+<script>
+  var container=document.querySelector(".container");
+  console.log(window.getComputedStyle(container).lineHeight);
+</script>
+</body>
+</html>
