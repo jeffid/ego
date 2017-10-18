@@ -93,7 +93,7 @@
 
     App.Profile = Profile;
 })(window.App);
-/* *************/
+/* 作品列表*************/
 (function (App) {
     function WorksList(options) {
         var that = this;
@@ -199,38 +199,6 @@
     App.WorksList = WorksList;
 })(window.App);
 
-/* *************/
-(function (App) {
-    function AlertModal(context) {
-        var that = this;
-        this.container = document.createElement("div");
-        this.source = _.$("#alert-modal").innerHTML;
-        this.container.innerHTML = _.renderItem(this.source, context);
-        document.body.appendChild(this.container);
-
-        this.container.addEventListener("click", function (e) {
-            var it = e.target;
-            if (it.classList.contains("cancel") || it.classList.contains("close")) {
-                that.close();
-            }
-            if (it.classList.contains("confirm")) {
-                _.emitEvent(that.container, "confirm");
-                that.close();
-            }
-        })
-    }
-
-    AlertModal.prototype.on = function (event, callback) {
-        this.container.addEventListener(event, function (e) {
-            callback();
-        })
-    }
-    AlertModal.prototype.close = function () {
-        document.body.removeChild(this.container);
-        this.container = null;
-    }
-    App.AlertModal = AlertModal;
-})(window.App);
 
 
 /* Pagination分页 *************/
@@ -390,7 +358,7 @@
     var page = {
         init: function () {
             var that = this;
-            /* 初始页头和 */
+            /* 初始页头 */
             this.initHeader();
         },
 
@@ -420,7 +388,7 @@
             this.paginagion = new App.Pagination({
                 parent: document.querySelector(".g-body"),
                 total: 260, // 只会影响页数，实际展示作品数与回调的参数相关
-                current: 10, //默认激活的页面序号
+                current: 1, //默认激活的页面序号
                 showNum: 8, //要显示的页码的数量
                 itemsLimit: itemsLimit, //一个页码代表多少作品数量，即显示多少作品
                 callback: function (currentPage) {

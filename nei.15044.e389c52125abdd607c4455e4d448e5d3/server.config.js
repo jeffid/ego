@@ -12,7 +12,7 @@ module.exports = {
     /* 路由 */
     routes: {
         //"ALL /api/*": "代理所有接口, 这里输入代理服务器地址",
-        //"ALL /api/*": "http://59.111.99.234/",
+        "ALL /api/*": "http://59.111.99.234/",
         "GET /captcha": "http://59.111.99.234/",
         "GET /uploads/:filemame": "http://59.111.99.234/",
         "GET /works/detail/:id": {name: '作品详情页面', index: 0, list: [{"id": 13096, "path": "works\\detail"}]},
@@ -21,6 +21,7 @@ module.exports = {
         "GET /uploads/:filename": {path: 'get/uploads/_/filename/data', id: 36427, group: '图画', isFile: true},
         "GET /search": {name: '搜索结果页面', index: 0, list: [{"id": 13080, "path": "search"}]},
         "GET /index": {name: '首页', index: 0, list: [{"id": 13078, "path": "index"}]},
+/*
         "GET /captcha": { path: 'get/captcha/data', id: 29450, group: '验证码',isFile: true },
         "POST /api/works?upload": { path: 'post/api/works/_/upload/data', id: 28719, group: '作品' },
               "PATCH /api/works/:id": { path: 'patch/api/works/_/id/data', id: 28580, group: '作品' },
@@ -36,6 +37,7 @@ module.exports = {
               "POST /api/register": { path: 'post/api/register/data', id: 28507, group: '用户' },
               "POST /api/logout": { path: 'post/api/logout/data', id: 28525, group: '用户' },
               "POST /api/login": { path: 'post/api/login/data', id: 28516, group: '用户' },
+*/
             },
 
         /* 注入给页面的模型数据的服务器配置 */

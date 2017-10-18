@@ -1,0 +1,357 @@
+.g-body {
+    width: 1100px;
+    margin: 55px auto 0;
+}
+
+.g-main {
+    float: left;
+    box-sizing: border-box;
+    width: 770px;
+    border: 1px solid #e5e6e6;
+    background-color: #f7f8f8;
+
+}
+
+.g-side {
+    float: right;
+    box-sizing: border-box;
+    width: 315px;
+    padding: 25px 20px 42px;
+    border: 1px solid #e5e6e6;
+    color: #727171;
+    background-color: #f7f8f8;
+}
+
+.g-side .u-formitem-title {
+    display: block;
+}
+
+.g-side .u-formitem-content {
+    display: block;
+}
+
+.g-side .u-formitem-title {
+    padding-bottom: 15px;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.g-side .u-formitem-content span {
+    display: block;
+    height: 34px;
+    line-height: 34px;
+}
+
+.g-side .u-formitem + .u-formitem {
+    margin-top: 40px;
+}
+
+.g-side .m-select {
+    width: 266px;
+}
+
+/* wrap-header */
+.wrap-header {
+    overflow: hidden;
+    padding: 0 15px;
+    border-bottom: 1px solid #e5e6e6;
+    background-color: #fff;
+}
+
+.wrap-header .u-formitem {
+    box-sizing: border-box;
+    min-height: 68px;
+    padding-top: 16px;
+}
+
+.wrap-header .u-formitem + .u-formitem {
+    border-top: 1px solid #e5e6e6;
+}
+
+.wrap-header .u-formitem-title {
+    box-sizing: border-box;
+    width: 104px;
+    padding-left: 16px;
+}
+
+.g-main .u-formitem-title {
+    float: left;
+    line-height: 38px;
+}
+
+.g-main .u-formitem-content {
+    float: left;
+}
+
+input.custom-btn {
+    position: absolute;
+    left: -1000em;
+    width: 0;
+    height: 0;
+}
+
+input[type="radio"].custom-btn + label {
+    float: left;
+    box-sizing: border-box;
+    width: 90px;
+    height: 38px;
+    margin-right: 33px;
+    border: 1px solid #5ed0ba;
+    border-radius: 5px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    background-color: #5ed0ba;
+}
+
+input[type="radio"].custom-btn:checked + label {
+    color: #5ed0ba;
+    background-color: #fff;
+}
+
+input[type="file"].custom-btn + label {
+    /*float: left;*/
+    display: inline-block;
+    box-sizing: border-box;
+    width: 123px;
+    height: 38px;
+    margin-right: 33px;
+    border: 1px solid #5ed0ba;
+    border-radius: 5px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    background-color: #5ed0ba;
+}
+
+/* 作品名为空提醒 */
+.u-formitem input + .alert {
+    display: none;
+}
+
+.u-formitem input.z-error + .alert {
+    display: inline-block;
+}
+
+.wrap-header .u-formitem-content p {
+    margin-top: 9px;
+    margin-bottom: 13px;
+}
+
+.u-formitem.preview {
+    height: 414px;
+}
+
+.u-preview {
+    padding-top: 36px;
+    padding-left: 78px;
+}
+
+.preview-item {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 140px;
+    margin-right: 26px;
+    margin-bottom: 50px;
+}
+
+.preview-item::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 80px;
+    height: 40px;
+}
+
+.preview-item .u-btn,
+.preview-item .u-icon-delete {
+    display: none;
+}
+
+.preview-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f8f8;
+}
+
+.preview-item:hover .u-btn {
+    position: absolute;
+    display: block;
+    left: 12px;
+    top: 152px;
+    z-index: 1;
+    display: inline-block;
+    width: 75px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 5px;
+}
+
+.preview-item:hover .u-icon-delete {
+    position: absolute;
+    display: block;
+    left: 82px;
+    top: 3px;
+    cursor: pointer;
+}
+
+.preview-item:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 102px;
+    height: 140px;
+    display: block;
+    background-color: rgba(133, 133, 133, .5);
+}
+
+/*************/
+.wrap-footer {
+    padding-top: 27px;
+    padding-left: 163px;
+    padding-right: 20px;
+    background-color: #fff;
+}
+
+.wrap-footer .u-formitem {
+    margin-bottom: 24px;
+}
+
+.wrap-footer .u-formitem-title {
+    width: 74px;
+}
+
+.wrap-footer input[name="name"] {
+    float: left;
+    box-sizing: border-box;
+    width: 295px;
+    height: 38px;
+    border: 1px solid #5ed0ba;
+}
+
+.wrap-footer .alert {
+    float: left;
+    color: red;
+    margin-left: 26px;
+    line-height: 38px;
+}
+
+.wrap-footer textarea {
+    box-sizing: border-box;
+    width: 406px;
+    height: 105px;
+    border: 1px solid #5ed0ba;
+    resize: none;
+}
+
+.u-formitem .taglist-item {
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    height: 28px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    border: 1px solid #5ed0ba;
+    border-radius: 5px;
+    color: #fff;
+    line-height: 28px;
+    background-color: #5ed0ba;
+    cursor: pointer;
+}
+
+.u-formitem .taglist-add .taglist-item {
+    color: #5ed0ba;
+    background-color: #fff;
+    cursor: default;
+}
+
+.u-formitem .create {
+    width: 100px;
+    height: 40px;
+    margin-top: 45px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.taglist-add.u-formitem-content {
+    width: 500px;
+}
+
+.u-formitem.recommend .u-formitem-title {
+    float: none;
+    color: #5ed0ba;
+}
+
+.recommend .u-formitem-content {
+    display: block;
+    float: none;
+}
+
+.taglist-add li .remove {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 3px;
+    color: #dcdddd;
+    background: none;
+}
+
+.taglist-add li:hover .remove {
+    display: block;
+}
+
+.taglist-add .addtag em {
+    display: inline-block;
+    line-height: 28px;
+}
+
+.taglist-add .addtag input {
+    display: none;
+}
+
+.taglist-add .addtag.z-acitve input {
+    display: inline-block;
+}
+
+.taglist-add .addtag.z-acitve em {
+    display: none;
+}
+
+/* 上传 */
+.upload .u-formitem-content {
+    overflow: hidden;
+    width: 630px;
+}
+
+/*
+.upload progress {
+    display: inline-block;
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+*/
+
+input[type="file"] + label {
+    cursor: pointer;
+}
+
+input[type="file"][disabled] + label,
+button[type="submit"][disabled] {
+    background-color: darkgrey;
+    border-color: darkgray;
+}
+
+.upload .tips {
+    clear: both;
+    padding-left: 104px;
+    line-height: 33px;
+}

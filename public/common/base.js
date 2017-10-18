@@ -108,6 +108,7 @@ window._ = {
         xhr.onload = function () {
             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                 //console.log("请求成功，并开始调用函数")
+                //console.log(xhr.DONE);
                 var data = xhr.responseText;
                 if (_.isJSON(data)) {
                     data = JSON.parse(data);
@@ -122,13 +123,8 @@ window._ = {
         };
 
         if (method === "GET") {
-            /* 特为分页请求增加的请求头设置 */
             if (obj.data !== undefined) {
-                if (obj.contentType === "application/json") {
-                    //xhr.setRequestHeader("Content-Type", contentType);
-                    url += "?" + JSON.stringify(data);
-                }
-                else   url += "?" + this.serialize(data);
+                url += "?" + this.serialize(data);
             }
 
             xhr.open(method, url, asyn);
@@ -286,7 +282,7 @@ window._ = {
                     success: function (responseData) {
                         if (responseData.code == 200) {
                             console.log("logout");
-                            window.location.href = "./index"
+                            window.location.href = "/index"
                             //location.reload();
                         }
                     }
@@ -330,4 +326,166 @@ window._ = {
     App.header = header;
 })(window.App);
 
+
+
+/* cascade级联选择器 *************/
+(function (App) {
+    function Cascade(container, data) {
+        var that = this;
+        this.container = container;
+        this.data = data;
+        this.selectModule = Array.prototype.slice.call(this.container.querySelectorAll(".m-select"));
+        this.selectVal = Array.prototype.slice.call(this.container.querySelectorAll(".select_val"));
+        this.selectList = Array.prototype.slice.call(this.container.querySelectorAll(".select_list"));
+        /* 监听单个选择框，以显示、隐藏选项列表 */
+        this.selectModule.forEach(function (item, idx) {
+            //console.log(item);
+            item.addEventListener("click", function (e) {
+                _.toggleClassname(that.selectList[idx], "f-dn");
+                _.toggleClassname(item, "z-active");
+                e.stopPropagation(); // 防止冒泡到document
+            })
+        });
+        /* 点击选框以外位置，关闭所有打开的选框列表 */
+        document.addEventListener("click", function () {
+            that.selectList.forEach(function (item, idx) {
+                _.addClassname(item, "f-dn");
+                _.delClassname(that.selectModule[idx], "z-active");
+            })
+        });
+
+        this.selectList.forEach(function (item, idx) {
+            item.addEventListener("click", function (e) {
+                if (e.target === item) {
+                    return
+                }
+
+                that.empty(idx); //清空当前及后序选择结果，清空当前的次次级的列表选项
+                that.selectVal[idx].dataset.code = e.target.dataset.code;
+                that.selectVal[idx].dataset.index = e.target.dataset.index;
+                that.selectVal[idx].innerText = e.target.innerText;
+
+
+                var options = [].slice.call(e.target.parentNode.children);
+                /* 先清除每个选项上的可能存在的选择状态 */
+                options.forEach(function (item) {
+                    _.delClassname(item, "z-selected");
+                });
+                /*添加当前选项的选择状态*/
+                _.addClassname(e.target, "z-selected");
+
+                if ((idx + 1) < that.selectList.length) {
+                    that.handeler(idx + 1); //将要填充容器的深度，从0开始，而其数据则要根据回溯的上每层选中项对应数据data得到
+                }
+            });
+        });
+        this.render(this.selectList[0], this.data); //初始化
+        //this.empty(0);
+        //this.handeler(0);//初始化
+    }
+
+    Cascade.prototype.empty = function (start) {
+        /* 清空 次次 级列表，以务不全级填充功能 */
+        //当前级的次级会在后序步骤中得到填充，因此跳过
+        for (var i = start + 2; i < this.selectList.length; i++) {
+            var list = this.selectList[i];
+            while (list.firstChild) {
+                list.removeChild(list.firstChild);
+            }
+        }
+        /* 清空旧的值 */
+        while (this.selectVal[start]) {
+            var it = this.selectVal[start];
+            it.dataset.code = it.dataset.index = it.innerText = ""; //将当前及队后的赋值全部清空
+            start++;
+        }
+    }
+    Cascade.prototype.render = function (container, data) {
+        var html = "";
+        /*
+         while(!!container.firstChild) {
+         container.removeChild(container.firstChild);
+         }
+         */
+        data.forEach(function (item, idx) {
+            html += '<li data-code="' + item[0] + '" data-index="' + idx + '">' + item[1] + '</li>';
+        })
+        container.innerHTML = html;
+
+        //_.emitEvent(container.firstElementChild,"click")
+    }
+    Cascade.prototype.getList = function (deep) {
+        var arr = this.data;
+        for (var i = 0; i < deep; i++) {
+            var idx = this.selectVal[i].dataset.index || 0;
+            arr = arr[idx][2]; //数据组在第三项，索引2.
+        }
+        return arr;
+    }
+    Cascade.prototype.handeler = function (deep) {
+
+        this.render(this.selectList[deep], this.getList(deep));
+
+        /* 后面功能启用时，这个判断才启用 */
+        //if (++deep >= this.selectList.length) return;
+
+        //this.render(this.selectList[deep], this.getList(deep)); //用于点击一次填充后序两层，这里不用
+
+        //this.handeler(deep); //用于将后序选框列表全部填充，这里不用
+    }
+    App.Cascade = Cascade;
+})(window.App);
+
+/* validator *****************/
+(function (App) {
+    var validator = {
+        isPhone: function (num) {
+            return /^\d{11}$/.test(num);
+        },
+        isFill: function (text) {
+            return text.trim().length > 0;
+        },
+        isPassword: function (it) {
+            return /^[\S]{6,16}$/.test(it);
+        },
+        isNickname: function (it) {
+            return /^[\S]{8,16}$/.test(it);
+        }
+    }
+    App.validator = validator;
+})(window.App);
+
+/* 通用提示框*************/
+(function (App) {
+    function AlertModal(context) {
+        var that = this;
+        this.container = document.createElement("div");
+        this.source = '<div class="alert-modal"><div class="head"><h4>提示消息：<span class="title">{{title}}</span></h4><button class="u-icon u-icon-close close u-btn"></button> </div> <div class="main"> <p class="content">{{content}}</p> <button class="u-btn u-btn-default confirm">确定</button> <button class="u-btn u-btn-primary cancel">取消</button> </div> </div>';
+        this.container.innerHTML = _.renderItem(this.source, context);
+        document.body.appendChild(this.container);
+
+        this.container.addEventListener("click", function (e) {
+            var it = e.target;
+            if (it.classList.contains("cancel") || it.classList.contains("close")) {
+                that.close();
+            }
+            // 点击确定发出事件
+            if (it.classList.contains("confirm")) {
+                _.emitEvent(that.container, "confirm");
+                that.close();
+            }
+        })
+    }
+
+    AlertModal.prototype.on = function (event, callback) {
+        this.container.addEventListener(event, function (e) {
+            callback();
+        })
+    }
+    AlertModal.prototype.close = function () {
+        document.body.removeChild(this.container);
+        this.container = null;
+    }
+    App.AlertModal = AlertModal;
+})(window.App);
 
