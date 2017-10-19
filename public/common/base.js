@@ -1,20 +1,22 @@
-/**
- * Created by WAXKI on 2017/10/10.
- */
+// 空对象
 window.App = {};
+// 通用工具对象
 window._ = {
     createElement: function (tag, className, text) {
+        /* 创建新元素 */
         var node = document.createElement(tag);
         node.className = className;
         node.innerHTML = text;
         return node;
     },
     renderItem: function (str, data) {
+        /* 填充模板 */
         return str.replace(/{{([^}]+)}}/g, function ($0, $1) {
             return data[$1];
         })
     },
     emitEvent: function (currentTarget, type, bubbles, cancelable, detail) {
+        /* 自定义响应事件 */
         //IE9+
         if (document.implementation.hasFeature("CustomEvents", "3.0")) {
             bubbles = (bubbles === undefined) ? true : bubbles;
@@ -27,6 +29,7 @@ window._ = {
         else console.log("该环境不支持自定义事件！");
     },
     isJSON: function (str) {
+        /* 判断JSON类型 */
         if (typeof str == 'string') {
             try {
                 var obj = JSON.parse(str); //不出错才会运行下步
@@ -44,6 +47,7 @@ window._ = {
         return false;
     },
     extend: function (newlyObj, proto) {
+        /* 对象浅复制 */
         for (var p in proto) {
             if (proto.hasOwnProperty(p)) {
                 newlyObj[p] = proto[p];
@@ -51,10 +55,8 @@ window._ = {
         }
         //newlyObj.prototype = Object.create(proto);
     },
-    getContainer: function (obj, selector) {
-        obj.container = document.querySelector(selector); //IE8+
-    },
     delClassname: function (elem, name) {
+        /* 删除样式名 */
         if (typeof elem != "object") return;
         elem.classList.remove(name); //IE10+
     },
@@ -64,7 +66,7 @@ window._ = {
         elem.classList.add(name);
     },
     toggleClassname: function (elem, name) {
-        /* 添加样式名 */
+        /* 切换样式名 */
         if (typeof elem != "object") return;
         elem.classList.toggle(name);
     },
@@ -74,6 +76,7 @@ window._ = {
         elem.className = name;
     },
     serialize: function (data) {
+        /* 对象序列化 */
         var name,
             value,
             str = "";
@@ -110,6 +113,7 @@ window._ = {
                 //console.log("请求成功，并开始调用函数")
                 //console.log(xhr.DONE);
                 var data = xhr.responseText;
+                // 如果返回值是JSON，默认转化成对象
                 if (_.isJSON(data)) {
                     data = JSON.parse(data);
                 }
@@ -122,15 +126,15 @@ window._ = {
             }
         };
 
+        // GET请求
         if (method === "GET") {
             if (obj.data !== undefined) {
                 url += "?" + this.serialize(data);
             }
-
             xhr.open(method, url, asyn);
             xhr.send(null);
         }
-
+        // POST请求
         else {
             xhr.open(method, url, asyn);
             xhr.setRequestHeader("Content-Type", contentType);
@@ -142,6 +146,7 @@ window._ = {
         }
     },
     $: function (selector, container) {
+        /* 单项选择符 */
         return (container || document).querySelector(selector);
     },
     $$: function (selector, container) {
@@ -156,8 +161,8 @@ window._ = {
     function Tabs(obj) {
         _.extend(this, obj); //get container and activeItem外加须要切换的列表组
         this.tab = this.container.querySelector("ul");
-        this.tabs = Array.prototype.slice.call(this.tab.children);
-        this.slider = this.container.querySelector(".slider");
+        this.tabs = [].slice.call(this.tab.children);
+        this.slider = this.container.querySelector(".slider"); //滑条元素
 
         this.init();
     }
@@ -166,23 +171,6 @@ window._ = {
         var that = this;
 
         /* 监听每一选项 */
-        /*
-         var i = -1,
-         item;
-         while(item=this.tabs[++i]) {
-         (function(it) {
-         return (function() {
-         it.addEventListener("click",function(e) {
-         that.highlight(it);
-         })
-         it.addEventListener("mouseover",function(e) {
-         that.current(it);
-         })
-         })()
-         })(item)
-         }
-         */
-        /* 同上 */
         this.tabs.forEach(function (item, idx) {
             //var that=this;
             item.addEventListener("click", function () {
@@ -194,6 +182,7 @@ window._ = {
 
             if (!that.slider) return; //没有滑条时不执行下面功能
             item.addEventListener("mouseover", function () {
+                // 滑条跟随
                 that.current(item);
             });
         });
@@ -202,7 +191,6 @@ window._ = {
 
         /* 离开导航栏，滑条自动返回当前激活选项处 */
         this.tab.addEventListener("mouseleave", function () {
-
             that.current(that.activeItem);
         });
 
@@ -211,21 +199,26 @@ window._ = {
     };
     /* 被激活选项字体高亮显示 */
     Tabs.prototype.highlight = function (elem) {
+        /* 文字高亮 */
         _.delClassname(this.activeItem, "z-active");
         this.activeItem = elem;
         _.addClassname(elem, "z-active");
     };
     /* 游标跟随被激活的选项或hover的选项 */
     Tabs.prototype.current = function (elem) {
+        /* 跟随活动 */
         this.slider.style.width = elem.offsetWidth + "px";
         this.slider.style.left = elem.offsetLeft + "px";
     };
     Tabs.prototype.listsToggle = function (idx) {
+        /* 点击切换 */
+        // 去除所有项的z-active样式
         this.contentLists.forEach(function (item) {
             item.classList.remove("z-active");
-        })
+        });
+        // 当前点击项加激活样式
         this.contentLists[idx].classList.add("z-active");
-    }
+    };
     App.Tabs = Tabs;
 })(window.App);
 
@@ -249,7 +242,7 @@ window._ = {
                 return false; //一般来说非必须
             }
         }.bind(this));
-    }
+    };
 
     App.Search = Search;
 })(window.App);
@@ -269,12 +262,14 @@ window._ = {
             this.guestPanel = this.headerElem.querySelector("#guest");
             this.userPanel = this.headerElem.querySelector("#userdropdown");
 
+            // 页头导航栏
             this.headerTab = new App.Tabs({
                 container: _.$(".g-header .m-nav"),
                 activeItem: this.getCurrentItem()
             });
+            // 搜索框
             this.search = new App.Search(_.$(".search_form"));
-
+            // 侦听退出事件
             this.logoutBtn.addEventListener("click", function () {
                 _.ajax({
                     url: "/api/logout",
@@ -282,7 +277,7 @@ window._ = {
                     success: function (responseData) {
                         if (responseData.code == 200) {
                             console.log("logout");
-                            window.location.href = "/index"
+                            window.location.href = "/index";
                             //location.reload();
                         }
                     }
@@ -296,21 +291,19 @@ window._ = {
             _.ajax({
                 url: "/api/users?getloginuser",
                 success: function (data) {
-                    //console.log(responseData.code)
-                    //var data = JSON.parse(responseData);
                     //返回JSON数据已在工具中转化成对象
-                    console.log("单独请求得到的登录用户信息", data)
+                    console.log("单独请求得到的登录用户信息", data);
                     if (data.code == 200) {
                         this.initUserInfo(data.result); //设置顶栏登录信息框显示与否
                         this.loginCallback && this.loginCallback(data.result); //设置window.App.user对象
                     }
                 }.bind(this) //this bind to header
-            })
+            });
         },
         initUserInfo: function (data) {
             /* 运行到这一步说明用户已经登录 */
-            console.log("已成功获取登录用户信息")
-            var iconConfig = ["u-icon u-icon-sex u-icon-female", "u-icon u-icon-sex u-icon-female"];//0应为男
+            console.log("已成功获取登录用户信息");
+            var iconConfig = ["u-icon u-icon-sex u-icon-male", "u-icon u-icon-sex u-icon-female"];//0应为男
             this.userNickname.innerHTML = data.nickname;
             this.sexIcon.className = iconConfig[data.sex];
 
@@ -319,24 +312,30 @@ window._ = {
             _.addClassname(this.guestPanel, "f-dn");
         },
         getCurrentItem: function () {
+            // 页头激活的导航项
             return this.headerElem.querySelector(".z-active");
         }
 
-    }
+    };
     App.header = header;
 })(window.App);
-
 
 
 /* cascade级联选择器 *************/
 (function (App) {
     function Cascade(container, data) {
         var that = this;
+        // 放级联框的容器
         this.container = container;
+        // 用于填充的数据，多维数组
         this.data = data;
-        this.selectModule = Array.prototype.slice.call(this.container.querySelectorAll(".m-select"));
-        this.selectVal = Array.prototype.slice.call(this.container.querySelectorAll(".select_val"));
-        this.selectList = Array.prototype.slice.call(this.container.querySelectorAll(".select_list"));
+        // 选择框的组
+        this.selectModule = [].slice.call(this.container.querySelectorAll(".m-select"));
+        // 选择结果组
+        this.selectVal = [].slice.call(this.container.querySelectorAll(".select_val"));
+        // 选择列表的组
+        this.selectList = [].slice.call(this.container.querySelectorAll(".select_list"));
+        //
         /* 监听单个选择框，以显示、隐藏选项列表 */
         this.selectModule.forEach(function (item, idx) {
             //console.log(item);
@@ -379,9 +378,8 @@ window._ = {
                 }
             });
         });
-        this.render(this.selectList[0], this.data); //初始化
-        //this.empty(0);
-        //this.handeler(0);//初始化
+
+        this.render(this.selectList[0], this.data); //初始化，填充第一层
     }
 
     Cascade.prototype.empty = function (start) {
@@ -399,8 +397,9 @@ window._ = {
             it.dataset.code = it.dataset.index = it.innerText = ""; //将当前及队后的赋值全部清空
             start++;
         }
-    }
+    };
     Cascade.prototype.render = function (container, data) {
+        /* 填充当前选框 */
         var html = "";
         /*
          while(!!container.firstChild) {
@@ -409,30 +408,26 @@ window._ = {
          */
         data.forEach(function (item, idx) {
             html += '<li data-code="' + item[0] + '" data-index="' + idx + '">' + item[1] + '</li>';
-        })
+        });
         container.innerHTML = html;
-
-        //_.emitEvent(container.firstElementChild,"click")
-    }
+    };
     Cascade.prototype.getList = function (deep) {
+        /* 获取将要填充的列表的数据 */
         var arr = this.data;
         for (var i = 0; i < deep; i++) {
             var idx = this.selectVal[i].dataset.index || 0;
             arr = arr[idx][2]; //数据组在第三项，索引2.
         }
         return arr;
-    }
+    };
     Cascade.prototype.handeler = function (deep) {
 
         this.render(this.selectList[deep], this.getList(deep));
 
         /* 后面功能启用时，这个判断才启用 */
         //if (++deep >= this.selectList.length) return;
-
-        //this.render(this.selectList[deep], this.getList(deep)); //用于点击一次填充后序两层，这里不用
-
         //this.handeler(deep); //用于将后序选框列表全部填充，这里不用
-    }
+    };
     App.Cascade = Cascade;
 })(window.App);
 
@@ -451,7 +446,7 @@ window._ = {
         isNickname: function (it) {
             return /^[\S]{8,16}$/.test(it);
         }
-    }
+    };
     App.validator = validator;
 })(window.App);
 
@@ -466,6 +461,7 @@ window._ = {
 
         this.container.addEventListener("click", function (e) {
             var it = e.target;
+            // 关闭弹窗
             if (it.classList.contains("cancel") || it.classList.contains("close")) {
                 that.close();
             }
@@ -478,14 +474,16 @@ window._ = {
     }
 
     AlertModal.prototype.on = function (event, callback) {
+        /* 可以响应事件 */
         this.container.addEventListener(event, function (e) {
             callback();
-        })
-    }
+        });
+    };
     AlertModal.prototype.close = function () {
+        /* 关闭弹窗 */
         document.body.removeChild(this.container);
         this.container = null;
-    }
+    };
     App.AlertModal = AlertModal;
 })(window.App);
 

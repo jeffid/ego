@@ -56,7 +56,7 @@ input:focus {
     z-index: 1;
 }
 
-/* icon */
+/* icon 雪碧图 */
 .u-icon {
     display: inline-block;
     vertical-align: middle;
@@ -179,6 +179,7 @@ input:focus {
     background-position: -4px -118px;
     transform: rotate(90deg);
 }
+/* /雪碧图*/
 
 /* 级联选择 */
 .m-select {

@@ -37,7 +37,7 @@
 }
 
 .slider_item.z-active {
-    z-index: 0;
+    z-index: 0; /* 当前激活的图片放在顶层 */
 }
 
 .slider_item_img {
@@ -83,7 +83,7 @@
 .slider_indicator_btn.z-active {
     background-color: #5ed0ba;
 }
-
+/* /轮播 */
 /* 主体 ***************************************************************/
 .g-main {
     float: left;
@@ -218,7 +218,7 @@
     line-height: normal;
 }
 */
-.m-card > button {
+.m-card > .u-btn {
     position: relative;
     width: 62px;
     height: 26px;
@@ -252,6 +252,7 @@
     height: 100%;
     z-index: -1;
 }
+/* /明日之星 */
 
 /* 最新作品 */
 .normal_list {
@@ -765,6 +766,7 @@
 .u-icon-error {
     background-position: -32px -19px;
 }
+/* /登录面板 */
 
 /* 注册面板*/
 .m-popup-2 {
@@ -812,4 +814,5 @@
     padding-left: 16px;
     margin-right: -1px; /* hack 同行显示 */
 }
+/* /注册面板*/
 

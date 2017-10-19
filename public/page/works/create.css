@@ -1,3 +1,4 @@
+/* 布局 */
 .g-body {
     width: 1100px;
     margin: 55px auto 0;
@@ -50,6 +51,7 @@
 .g-side .m-select {
     width: 266px;
 }
+/* /布局 */
 
 /* wrap-header */
 .wrap-header {
@@ -140,7 +142,9 @@ input[type="file"].custom-btn + label {
 }
 
 .u-formitem.preview {
+    overflow-y: scroll;/* 上传的图片很多的情况就滚动显示 */
     height: 414px;
+
 }
 
 .u-preview {
@@ -293,12 +297,13 @@ input[type="file"].custom-btn + label {
     display: block;
     float: none;
 }
-
+/* 删除标签的图标 */
 .taglist-add li .remove {
     display: none;
     position: absolute;
     top: 0;
     right: 3px;
+    line-height: 15px;
     color: #dcdddd;
     background: none;
 }
